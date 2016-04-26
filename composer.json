@@ -1,0 +1,19 @@
+{
+    "name": "vehsamrak/unique-word-counter",
+    "description": "CLI tool for counting unique words in text file",
+    "license": "GNU GPLv3",
+    "authors": [
+        {
+            "name": "Petr Karmashev",
+            "email": "smonkl@bk.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Vehsa\\UniqueWordsCounter\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phake/phake": "2.*"
+    }
+}
