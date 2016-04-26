@@ -2,4 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-(new Vehsa\UniqueWordsCounter\CountWordsCommand())->execute();
+$command = new \Vehsa\UniqueWordsCounter\CountWordsCommand();
+
+$application = new Vehsa\UniqueWordsCounter\Application($argv);
+$application->run($command);

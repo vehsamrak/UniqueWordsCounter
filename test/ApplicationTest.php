@@ -9,25 +9,15 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function run_command_commandExecuted()
+    public function run_commandWithResult_commandExecutedAndOutputPrinted()
     {
-        $application = new Application();
-        $command = $this->createCommand();
-
-        $application->run($command);
-
-        \Phake::verify($command)->execute();
-    }
-
-    /** @test */
-    public function run_commandWithResult_printOutputMethodCalled()
-    {
-        $application = new Application();
+        $application = $this->createApplication();
         $commandResult = $this->createCommandResult();
         $command = $this->createCommandWithResult($commandResult);
 
         $application->run($command);
 
+        \Phake::verify($command)->execute(\Phake::anyParameters());
         \Phake::verify($commandResult)->printOutput();
     }
 
@@ -55,8 +45,18 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     {
         $command = $this->createCommand();
 
-        \Phake::when($command)->execute()->thenReturn($commandResult);
+        \Phake::when($command)->execute(\Phake::anyParameters())->thenReturn($commandResult);
 
         return $command;
+    }
+
+    /**
+     * @return Application
+     */
+    private function createApplication()
+    {
+        $parameters = [];
+
+        return new Application($parameters);
     }
 }

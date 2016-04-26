@@ -8,5 +8,5 @@ namespace Vehsa\UniqueWordsCounter;
 interface CommandInterface
 {
 
-    public function execute(): CommandResult;
+    public function execute(array $parameters = []): CommandResult;
 }
