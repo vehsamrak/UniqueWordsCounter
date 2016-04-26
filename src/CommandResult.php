@@ -26,4 +26,12 @@ class CommandResult
     {
         echo $this->output . PHP_EOL;
     }
+
+    /**
+     * @return string
+     */
+    public function getOutput(): string
+    {
+        return $this->output;
+    }
 }
