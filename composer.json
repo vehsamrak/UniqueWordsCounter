@@ -13,6 +13,9 @@
             "Vehsa\\UniqueWordsCounter\\": "src/"
         }
     },
+    "require": {
+        "php": ">=7.0.0"
+    },
     "require-dev": {
         "phake/phake": "2.*"
     }
