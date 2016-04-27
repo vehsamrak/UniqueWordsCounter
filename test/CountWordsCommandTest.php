@@ -27,7 +27,7 @@ class CountWordsCommandTest extends \PHPUnit_Framework_TestCase
 
         $commandResult = $command->execute($parameters);
 
-        $this->assertEquals('File has been processed.', $commandResult->getOutput());
+        $this->assertEquals('File has 151 unique words.', $commandResult->getOutput());
     }
 
     /** @test */

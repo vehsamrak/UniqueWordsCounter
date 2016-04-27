@@ -18,7 +18,8 @@ class CountWordsCommand implements CommandInterface
             $filePath = $parameters[0] ?? null;
 
             if (file_exists($filePath)) {
-                $output = 'File has been processed.';
+                $uniqueWords = $this->countUniqueWords($filePath);
+                $output = sprintf('File has %d unique words.', $uniqueWords);
             } else {
                 $output = sprintf('File "%s" not found.', $filePath);
             }
@@ -27,5 +28,18 @@ class CountWordsCommand implements CommandInterface
         }
 
         return new CommandResult($output);
+    }
+
+    /**
+     * @param string $filePath Text file path to count unique words
+     */
+    private function countUniqueWords(string $filePath)
+    {
+        $text = file_get_contents($filePath);
+
+        $words = array_map('mb_strToLower', str_word_count($text, 1));
+        $uniqueWords = array_unique($words);
+
+        return count($uniqueWords);
     }
 }
