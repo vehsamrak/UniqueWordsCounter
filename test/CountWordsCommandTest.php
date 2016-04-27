@@ -54,7 +54,7 @@ class CountWordsCommandTest extends \PHPUnit_Framework_TestCase
      */
     private function createInputParametersWithPathToFileThatExists()
     {
-        return ['files/file-for-testing.txt'];
+        return [ __DIR__ . '/files/file-for-testing.txt'];
     }
 
     /**
