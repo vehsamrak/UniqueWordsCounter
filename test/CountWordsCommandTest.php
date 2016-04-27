@@ -20,7 +20,7 @@ class CountWordsCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function run_filePathParameter_outputWithSuccessMessage()
+    public function run_parameterWithPathToFileThatExists_outputWithSuccessMessage()
     {
         $command = new CountWordsCommand();
         $parameters = $this->createInputParametersWithPathToFileThatExists();
