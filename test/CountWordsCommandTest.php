@@ -23,11 +23,22 @@ class CountWordsCommandTest extends \PHPUnit_Framework_TestCase
     public function run_filePathParameter_outputWithSuccessMessage()
     {
         $command = new CountWordsCommand();
-        $parameters = $this->createInputParametersWithFilepathAsFirstParameter();
+        $parameters = $this->createInputParametersWithPathToFileThatExists();
 
         $commandResult = $command->execute($parameters);
 
         $this->assertEquals('File has been processed.', $commandResult->getOutput());
+    }
+
+    /** @test */
+    public function run_parameterWithPathToFileThatDoesNotExist_outputWithFileNotFoundMessage()
+    {
+        $command = new CountWordsCommand();
+        $parameters = $this->createInputParametersWithPathToFileThatDoesNotExist();
+
+        $commandResult = $command->execute($parameters);
+
+        $this->assertEquals('File "not-existent-file.txt" not found.', $commandResult->getOutput());
     }
 
     /**
@@ -41,8 +52,16 @@ class CountWordsCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    private function createInputParametersWithFilepathAsFirstParameter()
+    private function createInputParametersWithPathToFileThatExists()
     {
-        return ['filepath.txt'];
+        return ['files/file-for-testing.txt'];
+    }
+
+    /**
+     * @return array
+     */
+    private function createInputParametersWithPathToFileThatDoesNotExist()
+    {
+        return ['not-existent-file.txt'];
     }
 }

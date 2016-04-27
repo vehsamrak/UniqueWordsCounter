@@ -15,7 +15,13 @@ class CountWordsCommand implements CommandInterface
     public function execute(array $parameters = []): CommandResult
     {
         if (count($parameters)) {
-            $output = 'File has been processed.';
+            $filePath = $parameters[0] ?? null;
+
+            if (file_exists($filePath)) {
+                $output = 'File has been processed.';
+            } else {
+                $output = sprintf('File "%s" not found.', $filePath);
+            }
         } else {
             $output = 'Please specify file path to process.';
         }
