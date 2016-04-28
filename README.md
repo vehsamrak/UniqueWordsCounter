@@ -6,3 +6,5 @@ PHP 7 CLI tool for counting unique words in text file written in TDD with 100% c
 Install via composer `composer install`
 
 Run it with `php bin/countword.php path-to-file.txt`
+
+To run tests  (PHPUnit 5.3 and PHP 7 required) type `phpunit test`
