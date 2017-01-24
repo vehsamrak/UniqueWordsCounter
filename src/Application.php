@@ -8,9 +8,7 @@ namespace Vehsa\UniqueWordsCounter;
 class Application
 {
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $parameters;
 
     /**
@@ -18,8 +16,7 @@ class Application
      */
     public function __construct(array $parameters)
     {
-        $this->parameters = $parameters;
-        array_shift($this->parameters);
+        $this->parameters = array_shift($parameters);
     }
 
     /**
