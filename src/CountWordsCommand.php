@@ -21,7 +21,7 @@ class CountWordsCommand implements CommandInterface
                 $text = file_get_contents($filePath);
                 $output = sprintf('File has %d unique words.', $this->countUniqueWords($text));
             } else {
-                $output = sprintf('File "%s" not found.', $filePath);
+                $output = sprintf('File "%s" was not found.', $filePath);
             }
         } else {
             $output = 'Please specify file path to process.';
